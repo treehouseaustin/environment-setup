@@ -2,26 +2,16 @@
 
 - name: download atom
   get_url: url={{ atom_install_url }} dest=/tmp/atom.zip
-  tags:
-    - atom
 
 - name: install atom
   command: unzip /tmp/atom.zip -d /Applications creates=/Applications/Atom.app
-  tags:
-    - atom
 
 - name: link 'atom' cli
   command: ln -s {{ atom_cli_atom }} /usr/local/bin/atom creates=/usr/local/bin/atom
-  tags:
-    - atom
 
 - name: link 'apm' cli
   command: ln -s {{ atom_cli_apm }} /usr/local/bin/apm creates=/usr/local/bin/apm
-  tags:
-    - atom
 
 - name: install default atom packages
   command: apm install {{ item }}
   with_items: atom_packages
-  tags:
-    - atom

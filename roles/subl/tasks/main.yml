@@ -17,7 +17,7 @@
 
 - name: Copy sublime app to Applications directory
   when: subl_exists|failed
-  copy: src="/Volumes/Sublime\ Text/Sublime Text.app" dest=/Applications/
+  copy: src="/Volumes/Sublime Text/Sublime Text.app" dest=/Applications/
 
 - name: Unmount sublime image
   when: subl_exists|failed
@@ -25,17 +25,17 @@
 
 # subl command
 - name: Change subl perms
-  file: path=/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl mode=775
+  file: path="/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" mode=775
   sudo: yes
 
 - name: Subl command symlink
   when: subl_exists|failed
-  file: src=/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl dest=/usr/local/bin/subl state=link
+  file: src="/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" dest=/usr/local/bin/subl state=link
 
 # install package control
 - name: download package control
   when: subl_exists|failed
-  get_url: url={{ package_control_url }} dest="/tmp/Package\ Control.sublime-package" mode=0440
+  get_url: url={{ package_control_url }} dest="/tmp/Package Control.sublime-package" mode=0440
 
 - name: Copy package control to installed packages
   when: subl_exists|failed
