@@ -12,7 +12,7 @@ setup:
 
 provision:
 	@echo "-----> Running ansible playbook to provision system..."
-	@time ansible-playbook mac-osx.yml --diff
+	@time ansible-playbook mac-osx.yml --diff --ask-sudo-pass
 
 role:
 	@if [ "$($@)" = "" ]; then echo "Role is not defined. Pass role=rolename"; exit 1; fi
