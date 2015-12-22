@@ -1,21 +1,17 @@
 ---
 
-nodejs_nvm_ver: "0.29.0"
-nodejs_nvm_install_url: "https://raw.githubusercontent.com/creationix/nvm/v{{nodejs_nvm_ver}}/install.sh"
-nodejs_nvm_install_script: "{{home_dir}}/tmp/install.sh"
-nodejs_default_ver: "0.10"
+nodejs_version: 5.3.0
+nodejs_install_url: "https://nodejs.org/dist/v{{ nodejs_version }}/node-v{{ nodejs_version }}.pkg"
 nodejs_versions:
-  - "0.10"
-nodejs_brew_options: "with-debug,with-icu4c,with-openssl"
+  - 0.12
+  - 5.3
+  - stable
 nodejs_npm_packages:
   - bower
-  - coffee
-  - coffeelint
-  - cult
-  - grunt
   - grunt-cli
-  - gulp
   - jshint
-  - keybase
-  - keybase-installer
+  - node-sass
+  - n
+  - uglify-js
+  - uglifycss
   - yo

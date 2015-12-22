@@ -13,7 +13,7 @@ provision:
 	@read input; \
 	echo "-----> Continuing provision with $$input.yml..."; \
   HOMEBREW_CASK_OPTS="--appdir=/Applications" \
-		time ansible-playbook $$input.yml --diff
+		time ansible-playbook $$input.yml --diff --ask-sudo-pass
 
 role:
 	@if [ "$($@)" = "" ]; then echo "Role is not defined. Pass role=rolename"; exit 1; fi
@@ -23,4 +23,4 @@ role:
 		echo "---\n# $(role) $$dirname\n" > ./roles/$(role)/$$dirname/main.yml ;\
 	done
 
-.PHONY: all, role, setup, provision	
+.PHONY: all, role, setup, provision
