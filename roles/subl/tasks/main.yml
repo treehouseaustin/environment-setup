@@ -37,6 +37,11 @@
   when: subl_exists|failed
   get_url: url={{ package_control_url }} dest="/tmp/Package Control.sublime-package" mode=0440
 
+- name: Sublime app folder
+  file:
+    path={{ subl_app_folder }}
+    state=directory
+
 - name: Copy package control to installed packages
   when: subl_exists|failed
   copy: src="/tmp/Package Control.sublime-package" dest="{{ subl_app_folder }}/Installed Packages"
