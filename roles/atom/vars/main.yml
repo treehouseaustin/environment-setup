@@ -1,0 +1,6 @@
+---
+
+atom_version: 1.3.2
+atom_install_url: https://github.com/atom/atom/releases/download/v{{ atom_version }}/atom-mac.zip
+atom_cli_atom: /Applications/Atom.app/Contents/Resources/app/atom.sh
+atom_cli_apm: /Applications/Atom.app/Contents/Resources/app/apm/node_modules/.bin/apm
