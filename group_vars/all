@@ -2,4 +2,3 @@
 
 home_dir: "{{ lookup('env', 'HOME') }}"
 workspace_dir: "{{ home_dir }}/Sites"
-whoami: whoami
