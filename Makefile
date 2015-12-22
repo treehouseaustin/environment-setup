@@ -3,6 +3,9 @@ main_dirs = $(shell echo "roles/$(role)/{defaults,handlers,meta,tasks,vars}")
 
 all: setup provision
 
+basic:
+	ansible-playbook mac-osx.yml --ask-sudo-pass
+
 setup:
 	@echo "-----> Running setup script"
 	@sh ./scripts/setup.sh
