@@ -27,6 +27,6 @@
 
 - name: unmount sequel pro
   when: sequelpro_exists | failed
-  command: hdiutil detach {{ sequelpro_volume }}
+  command: hdiutil detach "{{ sequelpro_volume }}"
   tags:
     - lamp
