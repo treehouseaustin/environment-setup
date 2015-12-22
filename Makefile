@@ -14,8 +14,7 @@ provision:
 	@echo "-----> Running ansible playbook to provision system..."
 	@echo "-----> What flavor setup would you like?"
 	@read input; \
-	echo "-----> Continuing provision with $$input.yml..."; \
-  HOMEBREW_CASK_OPTS="--appdir=/Applications" \
+		echo "-----> Continuing provision with $$input.yml..."; \
 		time ansible-playbook $$input.yml --diff --ask-sudo-pass
 
 role:
