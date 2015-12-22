@@ -8,7 +8,7 @@ basic:
 
 setup:
 	@echo "-----> Running setup script"
-	@sh ./scripts/setup.sh
+	# @sh ./scripts/setup.sh
 
 provision:
 	@echo "-----> Running ansible playbook to provision system..."
