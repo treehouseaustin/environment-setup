@@ -30,9 +30,3 @@
   command: hdiutil detach {{ git_volume }}
   tags:
     - git
-
-- name: Setup .gitconfig
-  when: git_exists|failed
-  shell: echo "[user]\n  name = {{ first_name }} {{ last_name }}\n  email = {{ email }}\n[alias]\n  br = branch\n  ci = commit\n  cia = commit -a\n  co = checkout\n  df = diff\n  st = status\n[color]\n  ui = auto\n  branch = auto\n  diff = auto\n  status = auto\n[push]\n  default = tracking\n[remote 'origin']\n  push = HEAD\n[branch]\n  autosetupmerge = true" >> ~/.gitconfig
-  tags:
-    - git

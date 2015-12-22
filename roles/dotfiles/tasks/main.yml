@@ -7,3 +7,9 @@
   command: "{{ dotfiles_install_cmd }}"
   args:
     chdir: /tmp/dotfiles
+
+- name: Update .gitconfig with name
+  replace: dest="{{ home_dir }}/.gitconfig" regexp="%%name%%" replace="{{ first_name }} {{ last_name }}"
+
+- name: Update .gitconfig with email
+  replace: dest="{{ home_dir }}/.gitconfig" regexp="%%email%%" replace="{{ email }}"
