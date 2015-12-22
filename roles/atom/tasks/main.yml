@@ -19,3 +19,9 @@
   command: ln -s {{ atom_cli_apm }} /usr/local/bin/apm creates=/usr/local/bin/apm
   tags:
     - atom
+
+- name: install default atom packages
+  command: apm install {{ item }}
+  with_items: atom_packages
+  tags:
+    - atom
