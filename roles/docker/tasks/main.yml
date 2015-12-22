@@ -43,8 +43,24 @@
   tags:
     - docker
 
-- name: create drupal container
-  command: docker-machine ssh default "docker run -d -P {{ item }}"
-  with_items: docker_default_containers
+- name: check for installed containers
+  command: docker-machine ssh default "docker ps | grep 0.0.0.0:"
+  register: containers_installed
   tags:
     - docker
+
+- name: create default containers (mean)
+  when: containers_installed | failed
+  command: docker-machine ssh default "docker run -d -P {{ item }}"
+  with_items: docker_default_containers_mean
+  tags:
+    - docker
+    - mean
+
+- name: create default containers (lamp)
+  when: containers_installed | failed
+  command: docker-machine ssh default "docker run -d -P {{ item }}"
+  with_items: docker_default_containers_lamp
+  tags:
+    - docker
+    - lamp
