@@ -41,6 +41,6 @@
 
 # default packages
 - name: SublimeLinter3
-  git: repo="git@github.com:SublimeLinter/SublimeLinter3.git" dest="{{ subl_app_folder }}Packages/SublimeLinter" update=yes
+  git: repo="https://github.com/SublimeLinter/SublimeLinter3.git" dest="{{ subl_app_folder }}Packages/SublimeLinter" update=yes
   tags:
     - subl-packages
