@@ -21,5 +21,5 @@
 
 - name: install popular versions of node
   command: n {{ item }}
-  sudo: no
+  sudo: yes
   with_items: nodejs_versions
