@@ -2,28 +2,39 @@
 # git tasks
 
 # install git
+- name: Check if git is installed
+  command: git --version
+  register: git_exists
+  tags:
+    - git
+
 - name: Download git
+  when: git_exists|failed
   get_url: url={{ git_install_url }} dest=/tmp/git.dmg mode=0440
   tags:
     - git
 
 - name: Mount git image
+  when: git_exists|failed
   command: hdiutil attach /tmp/git.dmg
   tags:
     - git
 
 - name: Install git
+  when: git_exists|failed
   command: installer -pkg /Volumes/Git\ 2.6.3\ Mavericks\ Intel\ Universal/git-2.6.3-intel-universal-mavericks.pkg -target /
   sudo: yes
   tags:
     - git
 
 - name: Unmount git image
+  when: git_exists|failed
   command: hdiutil detach /Volumes/Git\ 2.6.3\ Mavericks\ Intel\ Universal
   tags:
     - git
 
 - name: Setup .gitconfig
+  when: git_exists|failed
   shell: echo "[user]\n  name = {{ first_name }} {{ last_name }}\n  email = {{ email }}\n[alias]\n  br = branch\n  ci = commit\n  cia = commit -a\n  co = checkout\n  df = diff\n  st = status\n[color]\n  ui = auto\n  branch = auto\n  diff = auto\n  status = auto\n[push]\n  default = tracking\n[remote 'origin']\n  push = HEAD\n[branch]\n  autosetupmerge = true" >> ~/.gitconfig
   tags:
     - git
