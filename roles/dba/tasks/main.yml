@@ -21,7 +21,10 @@
 
 - name: copy sequel pro to applications folder
   when: sequelpro_exists | failed
-  copy: src="{{ sequelpro_volume }}/Sequel Pro.app" dest=/Applications
+  synchronize:
+    src: "{{ sequelpro_volume }}/Sequel Pro.app"
+    dest: /Applications
+    perms: yes
   tags:
     - lamp
 
@@ -52,7 +55,10 @@
 
 - name: copy robomongo to applications folder
   when: robomongo_exists | failed
-  copy: src="{{ robomongo_volume }}/Robomongo.app" dest=/Applications
+  synchronize:
+    src: "{{ robomongo_volume }}/Robomongo.app"
+    dest: /Applications
+    perms: yes
   tags:
     - mean
 
