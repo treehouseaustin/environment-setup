@@ -30,3 +30,34 @@
   command: hdiutil detach "{{ sequelpro_volume }}"
   tags:
     - lamp
+
+- name: check for robomongo
+  command: stat /Applications/Robomongo.app
+  register: robomongo_exists
+  ignore_errors: yes
+  tags:
+    - mean
+
+- name: download robomongo
+  when: robomongo_exists | failed
+  get_url: url={{ robomongo_install_url }} dest=/tmp/robomongo.dmg mode=0440
+  tags:
+    - mean
+
+- name: mount robomongo
+  when: robomongo_exists | failed
+  raw: hdiutil convert /tmp/robomongo.dmg -format UDTO -o /tmp/robo.cdr && hdiutil attach /tmp/robo.cdr
+  tags:
+    - mean
+
+- name: copy robomongo to applications folder
+  when: robomongo_exists | failed
+  copy: src="{{ robomongo_volume }}/Robomongo.app" dest=/Applications
+  tags:
+    - mean
+
+- name: unmount robomongo
+  when: robomongo_exists | failed
+  raw: hdiutil detach "{{ robomongo_volume }}" && rm /tmp/robo.cdr
+  tags:
+    - mean
