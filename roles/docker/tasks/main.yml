@@ -3,7 +3,7 @@
 - name: check if docker is installed
   command: docker-machine -v | grep {{ docker_machine_version }}
   register: docker_exists
-  ignore_errors: True
+  ignore_errors: yes
   tags:
     - docker
 
