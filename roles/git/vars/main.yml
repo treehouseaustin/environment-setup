@@ -1,5 +1,5 @@
 ---
-# git vars
 
-git_version: "2.6.3"
-git_install_url: "http://downloads.sourceforge.net/project/git-osx-installer/git-2.6.3-intel-universal-mavericks.dmg?r=&ts=1450811245&use_mirror=iweb"
+git_version: 2.6.3
+git_install_url: http://downloads.sourceforge.net/project/git-osx-installer/git-{{ git_version }}-intel-universal-mavericks.dmg?r=&ts=1450811245&use_mirror=iweb
+git_volume: /Volumes/Git\ {{ git_version }}\ Mavericks\ Intel\ Universal

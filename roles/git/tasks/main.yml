@@ -1,7 +1,5 @@
 ---
-# git tasks
 
-# install git
 - name: Check if git is installed
   command: git --version
   register: git_exists
@@ -22,14 +20,14 @@
 
 - name: Install git
   when: git_exists|failed
-  command: installer -pkg /Volumes/Git\ 2.6.3\ Mavericks\ Intel\ Universal/git-2.6.3-intel-universal-mavericks.pkg -target /
+  command: installer -pkg {{ git_volume }}/git-{{ git_version }}-intel-universal-mavericks.pkg -target /
   sudo: yes
   tags:
     - git
 
 - name: Unmount git image
   when: git_exists|failed
-  command: hdiutil detach /Volumes/Git\ 2.6.3\ Mavericks\ Intel\ Universal
+  command: hdiutil detach {{ git_volume }}
   tags:
     - git
 
