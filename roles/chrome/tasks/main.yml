@@ -1,0 +1,34 @@
+---
+# chrome tasks
+
+# install chrome
+- name: check if chrome is installed
+  command: ls /Applications/Google\ Chrome.app/
+  register: chrome_exists
+  ignore_errors: True
+  tags:
+    - chrome
+
+- name: download chrome
+  when: chrome_exists|failed
+  get_url: url={{ chrome_install_url }} dest=/tmp/chrome.dmg mode=0440
+  tags:
+    - chrome
+
+- name: Mount chrome image
+  when: chrome_exists|failed
+  command: hdiutil attach /tmp/chrome.dmg
+  tags:
+    - chrome
+
+- name: Copy chrome app to Applications directory
+  when: chrome_exists|failed
+  copy: src="/Volumes/Google\ Chrome/Google\ Chrome.app/" dest=/Applications
+  tags:
+    - chrome
+
+- name: Unmount chrome image
+  when: chrome_exists|failed
+  command: hdiutil detach /Volumes/Google\ Chrome/
+  tags:
+    - chrome
