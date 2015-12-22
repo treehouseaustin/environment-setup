@@ -1,4 +1,4 @@
-# mac-ansible
+# Praxent mac-ansible
 
 Personal mac setup provisioned through Ansible
 
@@ -28,11 +28,9 @@ This role will take the liberty of installing a view essential docker tools such
 as machine, compose and swarm. It will also set up a default `dev` machine using
 virtualbox to use where the swarm image will also be pulled.
 
-## Caveats
+## Todo
 
-* Certain apps do not like being symlinked and ran from outside of `/Applications`
-  so this requires removing the symlink and copying the cask install `.app` file
-  to the `/Applications` directory.
-
-* I've seen the docker-machine creation of the dev machine hang on the install script
-  so this may be an issue when first provisioning a fresh machine.
+- Praxent Terminal Theme
+- Local DNS
+- More Dotfiles?
+- Sublime Packages

@@ -8,33 +8,35 @@
   ignore_errors: True
 
 - name: download sublime
-  # when: subl_exists|failed
+  when: subl_exists|failed
   get_url: url={{ subl_install_url }} dest=/tmp/subl.dmg mode=0440
 
 - name: Mount sublime image
-  # when: subl_exists|failed
+  when: subl_exists|failed
   command: hdiutil attach /tmp/subl.dmg
 
 - name: Copy sublime app to Applications directory
-  # when: subl_exists|failed
+  when: subl_exists|failed
   copy: src="/Volumes/Sublime Text/Sublime Text.app" dest=/Applications
 
 - name: Unmount sublime image
-  # when: subl_exists|failed
+  when: subl_exists|failed
   command: hdiutil detach /Volumes/Sublime\ Text
 
 # subl command
 - name: Subl command symlink
-  # when: subl_exists|failed
+  when: subl_exists|failed
   file: src="/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" dest=/usr/local/bin/subl state=link
+  sudo: yes
 
 # install package control
 - name: download package control
-  # when: subl_exists|failed
+  when: subl_exists|failed
   get_url: url={{ package_control_url }} dest="/tmp/Package Control.sublime-package" mode=0440
+  sudo: no
 
 - name: Copy package control to installed packages
-  # when: subl_exists|failed
+  when: subl_exists|failed
   copy: src="/tmp/Package Control.sublime-package" dest="{{ subl_app_folder }}/Installed Packages/"
 
 # default packages
