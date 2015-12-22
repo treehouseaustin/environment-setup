@@ -25,7 +25,7 @@
 
 # subl command
 - name: Change subl perms
-  file: path=/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl mode=+x
+  file: path=/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl mode=775
   sudo: yes
 
 - name: Subl command symlink
