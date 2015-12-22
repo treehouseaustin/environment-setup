@@ -4,22 +4,16 @@
   file:
     path={{ home_dir }}/.ssh
     state=directory
-  tags:
-    - base
 
 - name: Site workspace
   file:
     path={{ workspace_dir }}
     state=directory
-  tags:
-    - base
 
 - name: User tmp dir
   file:
     path="{{ home_dir }}/tmp"
     state=directory
-  tags:
-    - base
 
 - name: Own usr/local/bin
   file: path=/usr/local/bin owner={{ whoami }}
