@@ -30,3 +30,9 @@
   command: hdiutil detach {{ git_volume }}
   tags:
     - git
+
+- name: download github desktop
+  get_url: url=https://central.github.com/mac/latest dest=/tmp/github.zip mode=0440
+
+- name: install github desktop
+  command: unzip /tmp/github.zip -d /Applications creates="/Applications/GitHub Desktop.app"
