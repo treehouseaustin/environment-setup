@@ -1,5 +1,7 @@
 ---
 
+docker_default_containers:
+  - ignigena/drupal-kitematic
 docker_machine_version: "0.5.4"
 docker_toolbox_version: "1.9.1f"
 docker_toolbox_repo: "https://github.com/docker/toolbox"

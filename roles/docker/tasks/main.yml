@@ -19,10 +19,32 @@
   tags:
     - docker
 
+- name: check if machine is created
+  command: docker-machine ls | grep -i default
+  register: virtualbox_created
+  tags:
+    - docker
+
+- name: create machine
+  when: virtualbox_created | failed
+  command: docker-machine -D create -d virtualbox --virtualbox-disk-size "20000" default
+  tags:
+    - docker
+
 - name: check if machine is running
   command: docker-machine ls | grep -i default | grep -i running
   register: virtualbox_running
+  tags:
+    - docker
 
 - name: start machine
   when: virtualbox_running | failed
   command: docker-machine start default
+  tags:
+    - docker
+
+- name: create drupal container
+  command: docker-machine ssh default "docker run -d -P {{ item }}"
+  with_items: docker_default_containers
+  tags:
+    - docker
