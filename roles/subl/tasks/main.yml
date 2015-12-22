@@ -17,7 +17,7 @@
 
 - name: Copy sublime app to Applications directory
   when: subl_exists|failed
-  syncronize: src="/Volumes/Sublime Text/Sublime Text.app" dest=/Applications perms=yes
+  synchronize: src="/Volumes/Sublime Text/Sublime Text.app" dest=/Applications perms=yes
 
 - name: Unmount sublime image
   when: subl_exists|failed
