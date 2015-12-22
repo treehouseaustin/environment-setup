@@ -4,58 +4,44 @@
   command: docker-machine -v | grep {{ docker_machine_version }}
   register: docker_exists
   ignore_errors: yes
-  tags:
-    - docker
 
 - name: download docker toolbox
   when: docker_exists | failed
   get_url: url={{ docker_toolbox_install_url }} dest=/tmp/docker.pkg mode=0440
-  tags:
-    - docker
 
 - name: install docker toolbox
   when: docker_exists | failed
   command: installer -pkg /tmp/docker.pkg -target /
   sudo: yes
-  tags:
-    - docker
 
 - name: check if machine is created
   command: docker-machine inspect default
   register: virtualbox_created
-  tags:
-    - docker
+  ignore_errors: yes
 
 - name: create machine
   when: virtualbox_created | failed
   command: docker-machine -D create -d virtualbox --virtualbox-disk-size "20000" default
-  tags:
-    - docker
 
 - name: check if machine is running
   command: docker-machine ls | grep -i default | grep -i running
   register: virtualbox_running
-  tags:
-    - docker
+  ignore_errors: yes
 
 - name: start machine
   when: virtualbox_running | failed
   command: docker-machine start default
-  tags:
-    - docker
 
 - name: check for installed containers
   command: docker-machine ssh default "docker ps | grep 0.0.0.0:"
   register: containers_installed
-  tags:
-    - docker
+  ignore_errors: yes
 
 - name: create default containers (mean)
   when: containers_installed | failed
   command: docker-machine ssh default "docker run -d -P {{ item }}"
   with_items: docker_default_containers_mean
   tags:
-    - docker
     - mean
 
 - name: create default containers (lamp)
@@ -63,5 +49,4 @@
   command: docker-machine ssh default "docker run -d -P {{ item }}"
   with_items: docker_default_containers_lamp
   tags:
-    - docker
     - lamp
