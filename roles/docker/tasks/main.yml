@@ -50,7 +50,7 @@
     - docker
 
 - name: create default containers (mean)
-  when: containers_installed
+  when: containers_installed | failed
   command: docker-machine ssh default "docker run -d -P {{ item }}"
   with_items: docker_default_containers_mean
   tags:
