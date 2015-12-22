@@ -4,8 +4,16 @@
   connection: local
   gather_facts: false
 
+  vars_prompt:
+    - name: "first_name"
+      prompt: "What is your first name?"
+    - name: "last_name"
+      prompt: "What is your last name?"
+    - name: "email"
+      prompt: "What is your email address?"
+
   roles:
     - base
-    - nodejs
-    - docker
-    - apps
+  #   - nodejs
+  #   - docker
+  #   - apps

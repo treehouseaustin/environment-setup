@@ -13,8 +13,11 @@ function display() {
     echo "-----> $1"
 }
 
-display "Instsalling xcode"
-xcode-select --install
+display "Installing xcode with git"
+touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress;
+PROD=$(softwareupdate -l | grep "\*.*Command Line" | head -n 1 | awk -F"*" '{print $2}' | sed -e 's/^ *//' | tr -d '\n');
+softwareupdate -i "$PROD" -v;
+echo -ne '\n'; 
 
 if [ ! `which pip` ]
 then
