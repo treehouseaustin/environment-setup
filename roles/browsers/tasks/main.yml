@@ -21,7 +21,7 @@
 
 - name: Copy chrome app to Applications directory
   when: chrome_exists|failed
-  copy: src="/Volumes/Google Chrome/Google Chrome.app" dest=/Applications
+  synchronize: src="/Volumes/Google Chrome/Google Chrome.app" dest=/Applications perms=yes
   tags:
     - chrome
 
@@ -52,7 +52,7 @@
 
 - name: Copy firefox app to Applications directory
   when: firefox_exists|failed
-  copy: src="/Volumes/Firefox/Firefox.app" dest=/Applications
+  synchronize: src="/Volumes/Firefox/Firefox.app" dest=/Applications perms=yes
   tags:
     - firefox
 
