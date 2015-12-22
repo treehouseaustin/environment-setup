@@ -17,3 +17,4 @@
 
 - name: Own usr/local/bin
   file: path=/usr/local/bin owner={{ ansible_ssh_user }}
+  sudo: yes
