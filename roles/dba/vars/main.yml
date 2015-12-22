@@ -1,0 +1,6 @@
+---
+
+sequelpro_version: 1.1
+sequelpro_repo: https://github.com/sequelpro/sequelpro
+sequelpro_install_url: "{{ sequelpro_repo }}/releases/download/release-{{ sequelpro_version }}/sequel-pro-{{ sequelpro_version }}.dmg"
+sequelpro_volume: "/Volumes/Sequel Pro {{ sequelpro_version }}"

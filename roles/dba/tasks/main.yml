@@ -1,0 +1,32 @@
+---
+
+- name: check for sequel pro
+  command: stat /Applications/Sequel\ Pro.app
+  register: sequelpro_exists
+  ignore_errors: yes
+  tags:
+    - lamp
+
+- name: download sequel pro
+  when: sequelpro_exists | failed
+  get_url: url={{ sequelpro_install_url }} dest=/tmp/sequelpro.dmg mode=0440
+  tags:
+    - lamp
+
+- name: mount sequel pro
+  when: sequelpro_exists | failed
+  command: hdiutil attach /tmp/sequelpro.dmg
+  tags:
+    - lamp
+
+- name: copy sequel pro to applications folder
+  when: sequelpro_exists | failed
+  copy: src="{{ sequelpro_volume }}/Sequel Pro.app" dest=/Applications
+  tags:
+    - lamp
+
+- name: unmount sequel pro
+  when: sequelpro_exists | failed
+  command: hdiutil detach {{ sequelpro_volume }}
+  tags:
+    - lamp
