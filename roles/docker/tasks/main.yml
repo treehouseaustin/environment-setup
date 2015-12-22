@@ -21,7 +21,7 @@
     - docker
 
 - name: check if machine is created
-  command: docker-machine ls | grep -i default
+  command: docker-machine inspect default
   register: virtualbox_created
   tags:
     - docker
