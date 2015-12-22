@@ -1,5 +1,0 @@
----
-# firefox vars
-
-firefox_version: "43.0.1"
-firefox_install_url: "https://download.mozilla.org/?product=firefox-{{ firefox_version }}-SSL&os=osx&lang=en-US"

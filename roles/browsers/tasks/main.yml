@@ -1,0 +1,63 @@
+---
+
+- name: Check if chrome is installed
+  command: stat /Applications/Google\ Chrome.app
+  register: chrome_exists
+  ignore_errors: True
+  tags:
+    - chrome
+
+- name: Download chrome
+  when: chrome_exists|failed
+  get_url: url={{ chrome_install_url }} dest=/tmp/chrome.dmg mode=0440
+  tags:
+    - chrome
+
+- name: Mount chrome image
+  when: chrome_exists|failed
+  command: hdiutil attach /tmp/chrome.dmg
+  tags:
+    - chrome
+
+- name: Copy chrome app to Applications directory
+  when: chrome_exists|failed
+  copy: src="/Volumes/Google\ Chrome/Google\ Chrome.app/" dest=/Applications
+  tags:
+    - chrome
+
+- name: Unmount chrome image
+  when: chrome_exists|failed
+  command: hdiutil detach /Volumes/Google\ Chrome/
+  tags:
+    - chrome
+
+- name: Check if firefox is installed
+  command: stat /Applications/Firefox.app
+  register: firefox_exists
+  ignore_errors: True
+  tags:
+    - firefox
+
+- name: Download firefox
+  when: firefox_exists|failed
+  get_url: url={{ firefox_install_url }} dest=/tmp/firefox.dmg mode=0440
+  tags:
+    - firefox
+
+- name: Mount firefox image
+  when: firefox_exists|failed
+  command: hdiutil attach /tmp/firefox.dmg
+  tags:
+    - firefox
+
+- name: Copy firefox app to Applications directory
+  when: firefox_exists|failed
+  copy: src="/Volumes/Firefox/Firefox.app/" dest=/Applications
+  tags:
+    - firefox
+
+- name: Unmount firefox image
+  when: firefox_exists|failed
+  command: hdiutil detach /Volumes/Firefox/
+  tags:
+    - firefox
