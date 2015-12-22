@@ -1,0 +1,6 @@
+---
+# subl vars
+
+subl_version: 3083
+subl_install_url: "http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%20Build%20{{ subl_version }}.dmg"
+package_control_url: "https://packagecontrol.io/Package%20Control.sublime-package"

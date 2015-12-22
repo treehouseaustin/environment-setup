@@ -1,0 +1,46 @@
+---
+# subl tasks
+
+# install sublime
+- name: check if sublime is installed
+  command: subl -v
+  register: subl_exists
+  tags:
+    - subl
+
+- name: download sublime
+  # when: subl_exists|failed
+  get_url: url={{ subl_install_url }} dest=/tmp/subl.dmg mode=0440
+  tags:
+    - subl
+
+- name: Mount subl image
+  # when: subl_exists|failed
+  command: hdiutil attach /tmp/subl.dmg
+  tags:
+    - subl
+
+- name: Copy subl app to Applications directory
+  # when: subl_exists|failed
+  command: cp -R /Volumes/Sublime\ Text/Sublime\ Text.app /Applications
+  tags:
+    - subl
+
+- name: Unmount subl image
+  # when: subl_exists|failed
+  command: hdiutil detach /Volumes/Sublime\ Text
+  tags:
+    - subl
+
+# install package control
+- name: download package control
+  # when: subl_exists|failed
+  get_url: url={{ package_control_url }} dest=/tmp/Package\ Control.sublime-package mode=0440
+  tags:
+    - subl
+
+- name: Copy package control to installed packages
+  # when: subl_exists|failed
+  command: cp -R /tmp/Package\ Control.sublime-package /Users/jamesmoughon/Library/Application\ Support/Sublime\ Text\ 3/Installed\ Packages/
+  tags:
+    - subl
