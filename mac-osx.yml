@@ -16,8 +16,8 @@
       private: no
 
   roles:
-    # - base
-    # - nodejs
-    # - docker
-    # - subl
+    - base
+    - nodejs
+    - docker
+    - subl
     - git

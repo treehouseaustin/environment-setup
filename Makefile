@@ -8,18 +8,18 @@ basic:
 
 setup:
 	@echo "-----> Running setup script"
-	# @sh ./scripts/setup.sh
+	@sh ./scripts/setup.sh
 
 provision:
 	@echo "-----> Running ansible playbook to provision system..."
 	@time ansible-playbook mac-osx.yml --diff --ask-sudo-pass
 
-# role:
-# 	@if [ "$($@)" = "" ]; then echo "Role is not defined. Pass role=rolename"; exit 1; fi
-# 	@mkdir -p $(all_dirs)
-# 	@touch $(main_dirs)/main.yml
-# 	@for dirname in defaults handlers meta tasks vars; do \
-# 		echo "---\n# $(role) $$dirname\n" > ./roles/$(role)/$$dirname/main.yml ;\
-# 	done
+role:
+	@if [ "$($@)" = "" ]; then echo "Role is not defined. Pass role=rolename"; exit 1; fi
+	@mkdir -p $(all_dirs)
+	@touch $(main_dirs)/main.yml
+	@for dirname in defaults handlers meta tasks vars; do \
+		echo "---\n# $(role) $$dirname\n" > ./roles/$(role)/$$dirname/main.yml ;\
+	done
 
-# .PHONY: all, role, setup, provision
+.PHONY: all, role, setup, provision
