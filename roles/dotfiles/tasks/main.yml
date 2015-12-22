@@ -1,9 +1,9 @@
 ---
 
-- name: Get dotfiles repo
-  git: repo={{ dotfiles_repo }} dest={{ workspace_dir }}/dotfiles
+- name: get dotfiles
+  git: repo={{ dotfiles_repo }} dest=/tmp/dotfiles
 
-- name: Install dotfiles
+- name: install dotfiles
   command: "{{ dotfiles_install_cmd }}"
   args:
-    chdir: "{{ dotfiles_dir }}"
+    chdir: /tmp/dotfiles
