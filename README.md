@@ -16,12 +16,6 @@ to provision.
 
 The `mac-osx.yml` playbook is then ran to provision everything.
 
-## Roles
-
-Some roles are tied directly to my personal setup. If you are using this you could
-remove these roles from the `mac-osx.yml` playbook or override variables to get
-your own personal setup.
-
 ### Docker
 
 This role will take the liberty of installing a view essential docker tools such
@@ -32,5 +26,5 @@ virtualbox to use where the swarm image will also be pulled.
 
 - Praxent Terminal Theme
 - Local DNS
-- More Dotfiles?
 - Sublime Packages
+- More Dotfiles?
