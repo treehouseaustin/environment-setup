@@ -27,13 +27,11 @@
 - name: Subl command symlink
   when: subl_exists|failed
   file: src="/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" dest=/usr/local/bin/subl state=link
-  sudo: yes
 
 # install package control
 - name: download package control
   when: subl_exists|failed
   get_url: url={{ package_control_url }} dest="/tmp/Package Control.sublime-package" mode=0440
-  sudo: no
 
 - name: Copy package control to installed packages
   when: subl_exists|failed
