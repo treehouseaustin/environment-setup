@@ -14,6 +14,6 @@
 
   roles:
     - base
-  #   - nodejs
-  #   - docker
-  #   - apps
+    - nodejs
+    - docker
+    - apps

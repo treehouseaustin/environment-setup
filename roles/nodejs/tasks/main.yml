@@ -1,31 +1,29 @@
 ---
 
-- name: Install node via homebrew
-  homebrew:
-    name=node
-    install_options={{ nodejs_brew_options }}
-    state=latest
+- name: check if node is installed
+  command: node -v
+  register: node_exists
+
+- name: download node and npm
+  when: node_exists|failed
+  get_url: url={{ nodejs_install_url }} dest=/tmp/node.pkg mode=0440
   tags:
-    - brew
     - nodejs
 
-- name: Install global npm packages
+- name: install node and npm
+  when: node_exists|failed
+  command: installer -pkg /tmp/node.pkg -target /
+  sudo: yes
+  tags:
+    - nodejs
+
+- name: install global npm packages
   npm: name={{ item }} global=true
   with_items: nodejs_npm_packages
+  sudo: no
   tags:
     - nodejs
 
-- name: Nvm setup script
-  template:
-    src=nvm-setup.j2
-    dest={{ home_dir }}/bin/setup-nvm
-    mode=0755
-  tags:
-    - nodejs
-    - nvm
-
-- name: Run nvm setup script
-  command: "{{ home_dir }}/bin/setup-nvm"
-  tags:
-    - nodejs
-    - nvm
+- name: install popular versions of node
+  command: n {{ item }}
+  with_items: nodejs_versions
