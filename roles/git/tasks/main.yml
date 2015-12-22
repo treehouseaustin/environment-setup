@@ -1,0 +1,24 @@
+---
+# git tasks
+
+# install git
+- name: download git
+  get_url: url={{ git_install_url }} dest=/tmp/git.dmg mode=0440
+  tags:
+    - git
+
+- name: Mount git image
+  command: hdiutil attach /tmp/git.dmg
+  tags:
+    - git
+
+- name: install git
+  command: installer -pkg /Volumes/Git\ 2.6.3\ Mavericks\ Intel\ Universal/git-2.6.3-intel-universal-mavericks.pkg -target /
+  sudo: yes
+  tags:
+    - git
+
+- name: Unmount git image
+  command: hdiutil detach /Volumes/Git\ 2.6.3\ Mavericks\ Intel\ Universal
+  tags:
+    - git

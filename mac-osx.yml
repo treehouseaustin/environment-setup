@@ -7,13 +7,17 @@
   vars_prompt:
     - name: "first_name"
       prompt: "What is your first name?"
+      private: no
     - name: "last_name"
       prompt: "What is your last name?"
+      private: no
     - name: "email"
       prompt: "What is your email address?"
+      private: no
 
   roles:
-    - base
-    - nodejs
-    - docker
-    - subl
+    # - base
+    # - nodejs
+    # - docker
+    # - subl
+    - git
