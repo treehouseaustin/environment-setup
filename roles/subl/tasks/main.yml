@@ -39,7 +39,7 @@
 
 - name: Copy package control to installed packages
   when: subl_exists|failed
-  copy: src="/tmp/Package Control.sublime-package" dest="{{ subl_app_folder }}/Installed Packages/"
+  copy: src="/tmp/Package Control.sublime-package" dest="{{ subl_app_folder }}/Installed Packages"
 
 # default packages
 - name: SublimeLinter3
