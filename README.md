@@ -24,24 +24,24 @@ virtualbox to use where the swarm image will also be pulled.
 
 ## Todo
 
-- Praxent Terminal Theme
-- Local DNS
-- Consider more Dotfiles
-- Sublime Packages
-* DocBlockr
-* Drupal
-* GitGutter
-* HandleBars
-* PhpDoc
-* Sass
-* SCSS
-* SideBarEnhancements
-* SublimeGit
-* SublimeLinter
-* SublimeLinter-contrib-scss-lint
-* SublimeLinter-jscs
-* SublimeLinter-jshint
-* SublimeLinter-php
-* SublimeLinter-phpcs
-* SublimeLinter-phpmd
-* Twig
+* Praxent Terminal Theme
+* Local DNS
+* Consider more Dotfiles
+* Sublime Packages
+  * DocBlockr
+  * Drupal
+  * GitGutter
+  * HandleBars
+  * PhpDoc
+  * Sass
+  * SCSS
+  * SideBarEnhancements
+  * SublimeGit
+  * SublimeLinter
+  * SublimeLinter-contrib-scss-lint
+  * SublimeLinter-jscs
+  * SublimeLinter-jshint
+  * SublimeLinter-php
+  * SublimeLinter-phpcs
+  * SublimeLinter-phpmd
+  * Twig
