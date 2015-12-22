@@ -1,0 +1,6 @@
+---
+
+- name: Description
+  command: "{{ var }}"
+  tags:
+    - docker

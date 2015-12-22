@@ -23,4 +23,4 @@ role:
 		echo "---\n# $(role) $$dirname\n" > ./roles/$(role)/$$dirname/main.yml ;\
 	done
 
-.PHONY: all, role, setup, provision
+.PHONY: all, role, setup, provision	

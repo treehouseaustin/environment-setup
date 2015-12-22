@@ -6,10 +6,6 @@
 
   roles:
     - base
-    - dotfiles
-    - vimfiles
-    - ruby
-    - golang
     - nodejs
-    - python
     - docker
+    - apps

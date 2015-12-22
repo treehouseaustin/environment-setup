@@ -7,12 +7,11 @@ Personal mac setup provisioned through Ansible
 * Latest Xcode
 * Pip (installed in setup script if missing)
 * Ansible (installed in setup script if missing)
-* Homebrew (installed in setup script if missing)
 
 ## Installation
 
 Simply cloning this repository and running `make` is all that is required.
-Doing so will install pip, ansible, and homebrew as they are all required
+Doing so will install pip and ansible as they are both required
 to provision.
 
 The `mac-osx.yml` playbook is then ran to provision everything.
@@ -22,17 +21,6 @@ The `mac-osx.yml` playbook is then ran to provision everything.
 Some roles are tied directly to my personal setup. If you are using this you could
 remove these roles from the `mac-osx.yml` playbook or override variables to get
 your own personal setup.
-
-### Vimfiles
-
-Currently this role pulls my vimfiles repository and runs an install command. You
-could override specific variables here to point to your own vim repo and run a
-different install command to get your own setup.
-
-### Dotfiles
-
-Same thing here as with the vimfiles role. It will pull from a repository and run
-an install command to setup any dotfiles or profile specific files.
 
 ### Docker
 
