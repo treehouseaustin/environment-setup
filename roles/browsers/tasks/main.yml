@@ -21,7 +21,7 @@
 
 - name: Copy chrome app to Applications directory
   when: chrome_exists|failed
-  copy: src="/Volumes/Google\ Chrome/Google Chrome.app/" dest=/Applications/
+  copy: src="/Volumes/Google\ Chrome/Google\ Chrome.app/" dest=/Applications/
   tags:
     - chrome
 
