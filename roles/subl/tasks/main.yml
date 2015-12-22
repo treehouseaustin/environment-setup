@@ -39,7 +39,7 @@
 
 - name: Sublime app folder
   file:
-    path={{ subl_app_folder }}
+    path="{{ subl_app_folder }}"
     state=directory
 
 - name: Copy package control to installed packages
