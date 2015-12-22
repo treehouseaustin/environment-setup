@@ -1,28 +1,28 @@
 ---
 
-- name: Install docker via homebrew
-  homebrew:
-    name=docker
-    state=latest
-  tags:
-    - brew
-    - docker
-
-- name: Link docker
-  command: brew link --overwrite docker
-  tags:
-    - brew
-    - docker
-
-- name: Docker install script
-  template:
-    src=setup-docker.j2
-    dest={{ home_dir }}/bin/setup-docker
-    mode=0755
+- name: check if docker is installed
+  command: docker-machine -v | grep {{ docker_machine_version }}
+  register: docker_exists
   tags:
     - docker
 
-- name: Run docker setup install script
-  command: "{{ home_dir }}/bin/setup-docker"
+- name: download docker toolbox
+  when: docker_exists | failed
+  get_url: url={{ docker_toolbox_install_url }} dest=/tmp/docker.pkg mode=0440
   tags:
     - docker
+
+- name: install docker toolbox
+  when: docker_exists | failed
+  command: installer -pkg /tmp/node.pkg -target /
+  sudo: yes
+  tags:
+    - docker
+
+- name: check if machine is running
+  command: docker-machine ls | grep -i default | grep -i running
+  register: virtualbox_running
+
+- name: start machine
+  when: virtualbox_running | failed
+  command: docker-machine start default
