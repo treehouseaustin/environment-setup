@@ -14,7 +14,7 @@
 
 - name: install docker toolbox
   when: docker_exists | failed
-  command: installer -pkg /tmp/node.pkg -target /
+  command: installer -pkg /tmp/docker.pkg -target /
   sudo: yes
   tags:
     - docker
