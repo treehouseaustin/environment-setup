@@ -4,29 +4,22 @@
   command: node -v
   ignore_errors: True
   register: node_exists
-  tags:
-    - nodejs
 
 - name: download node and npm
   when: node_exists|failed
   get_url: url={{ nodejs_install_url }} dest=/tmp/node.pkg mode=0440
-  tags:
-    - nodejs
 
 - name: install node and npm
   when: node_exists|failed
   command: installer -pkg /tmp/node.pkg -target /
   sudo: yes
-  tags:
-    - nodejs
 
 - name: install global npm packages
   npm: name={{ item }} global=true
   with_items: nodejs_npm_packages
-  sudo: no
-  tags:
-    - nodejs
+  sudo: yes
 
 - name: install popular versions of node
   command: n {{ item }}
+  sudo: no
   with_items: nodejs_versions
