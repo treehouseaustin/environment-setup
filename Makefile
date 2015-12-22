@@ -10,10 +10,10 @@ setup:
 provision:
 	@echo "-----> Running ansible playbook to provision system..."
 	@echo "-----> What flavor setup would you like?"
-	@read input
-	@echo "-----> Continuing provision with $input..."	
-	@HOMEBREW_CASK_OPTS="--appdir=/Applications" \
-		time ansible-playbook $input.yml --diff
+	@read input; \
+	echo "-----> Continuing provision with $$input.yml..."; \
+  HOMEBREW_CASK_OPTS="--appdir=/Applications" \
+		time ansible-playbook $$input.yml --diff
 
 role:
 	@if [ "$($@)" = "" ]; then echo "Role is not defined. Pass role=rolename"; exit 1; fi
