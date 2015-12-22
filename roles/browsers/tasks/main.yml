@@ -27,7 +27,7 @@
 
 - name: Unmount chrome image
   when: chrome_exists|failed
-  command: hdiutil detach /Volumes/Google\ Chrome/
+  command: hdiutil detach -nobrowse /Volumes/Google\ Chrome
   tags:
     - chrome
 
@@ -46,18 +46,18 @@
 
 - name: Mount firefox image
   when: firefox_exists|failed
-  command: hdiutil attach /tmp/firefox.dmg
+  command: hdiutil attach -nobrowse /tmp/firefox.dmg
   tags:
     - firefox
 
 - name: Copy firefox app to Applications directory
   when: firefox_exists|failed
-  copy: src="/Volumes/Firefox/Firefox.app/" dest=/Applications
+  copy: src="/Volumes/Firefox/Firefox.app" dest=/Applications
   tags:
     - firefox
 
 - name: Unmount firefox image
   when: firefox_exists|failed
-  command: hdiutil detach /Volumes/Firefox/
+  command: hdiutil detach /Volumes/Firefox
   tags:
     - firefox
