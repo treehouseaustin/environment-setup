@@ -49,3 +49,8 @@
   git: repo="https://github.com/SublimeLinter/SublimeLinter3.git" dest="{{ subl_app_folder }}Packages/SublimeLinter" update=yes
   tags:
     - subl-packages
+
+# default user preferences
+- name: SublimePrefs
+  when: subl_exists|failed
+  copy: src="roles/subl/vars/Preferences.sublime-settings" dest="{{ home_dir }}/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings"
