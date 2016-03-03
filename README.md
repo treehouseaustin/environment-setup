@@ -1,47 +1,35 @@
-# Praxent mac-ansible
+# Local Dev Environment Setup
 
-Personal mac setup provisioned through Ansible
-
-## Requirements
-
-* Latest Xcode
-* Pip (installed in setup script if missing)
-* Ansible (installed in setup script if missing)
+Personal Mac setup provisioned through Ansible
 
 ## Installation
 
-Simply cloning this repository and running `make` is all that is required.
-Doing so will install pip and ansible as they are both required
-to provision.
+Simply cloning this repository and running `make` is all that is required. Doing
+so will install pip and Ansible as they are both required to provision.
 
 The `mac-osx.yml` playbook is then ran to provision everything.
 
-### Docker
+## Requirements
 
-This role will take the liberty of installing a view essential docker tools such
+All requirements listed here are only for reference purposes. These will be
+installed automatically on first run if they are missing.
+
+* xcodetools
+* Pip
+* Ansible
+
+## Available Tools
+
+* Atom (http://atom.io)
+* Browsers (Chrome and Firefox)
+* Database tools (Sequel Pro and Robomongo)
+* Docker Toolbox and Kitematic
+* Dotfiles for BASH and GIT
+* GIT and Github Desktop
+* Node.js
+
+### Docker Toolbox
+
+This role will take the liberty of installing a few essential Docker tools such
 as machine, compose and swarm. It will also set up a default `dev` machine using
-virtualbox to use where the swarm image will also be pulled.
-
-## Todo
-
-* Praxent Terminal Theme
-* Local DNS
-* Consider more Dotfiles
-* Sublime Packages
-  * DocBlockr
-  * Drupal
-  * GitGutter
-  * HandleBars
-  * PhpDoc
-  * Sass
-  * SCSS
-  * SideBarEnhancements
-  * SublimeGit
-  * SublimeLinter
-  * SublimeLinter-contrib-scss-lint
-  * SublimeLinter-jscs
-  * SublimeLinter-jshint
-  * SublimeLinter-php
-  * SublimeLinter-phpcs
-  * SublimeLinter-phpmd
-  * Twig
+VirtualBox to use where the swarm image will also be pulled.
