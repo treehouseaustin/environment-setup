@@ -1,20 +1,15 @@
 ---
 
+- name: get current username
+  command: whoami
+  register: local_username
+  delegate_to: 127.0.0.1
+
 - name: ssh dir
   file:
     path={{ home_dir }}/.ssh
     state=directory
 
-- name: Site workspace
-  file:
-    path={{ workspace_dir }}
-    state=directory
-
-- name: User tmp dir
-  file:
-    path="{{ home_dir }}/tmp"
-    state=directory
-
-- name: Own usr/local/bin
-  file: path=/usr/local/bin owner={{ ansible_ssh_user }}
+- name: correct ownership of usr/local/bin
+  file: path=/usr/local/bin owner={{ local_username.stdout }}
   sudo: yes
