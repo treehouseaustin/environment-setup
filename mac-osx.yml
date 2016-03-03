@@ -20,7 +20,6 @@
     - nodejs
     - dotfiles
     - docker
-    - subl
     - atom
     - git
     - dba
