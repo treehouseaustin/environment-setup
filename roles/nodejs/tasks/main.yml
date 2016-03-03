@@ -16,10 +16,10 @@
 
 - name: install global npm packages
   npm: name={{ item }} global=true
-  with_items: nodejs_npm_packages
+  with_items: "{{ nodejs_npm_packages }}"
   sudo: yes
 
 - name: install popular versions of node
   command: n {{ item }}
   sudo: yes
-  with_items: nodejs_versions
+  with_items: "{{ nodejs_versions }}"

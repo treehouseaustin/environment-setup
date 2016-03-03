@@ -3,8 +3,7 @@
 nodejs_version: 5.3.0
 nodejs_install_url: "https://nodejs.org/dist/v{{ nodejs_version }}/node-v{{ nodejs_version }}.pkg"
 nodejs_versions:
-  - 0.12
-  - 5.3
+  - lts
   - stable
 nodejs_npm_packages:
   - bower
