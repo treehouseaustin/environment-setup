@@ -7,10 +7,10 @@
   command: unzip /tmp/atom.zip -d /Applications creates=/Applications/Atom.app
 
 - name: link 'atom' cli
-  command: ln -s {{ atom_cli_atom }} /usr/local/bin/atom creates=/usr/local/bin/atom
+  file: src={{ atom_cli_atom }} dest=/usr/local/bin/atom state=link
 
 - name: link 'apm' cli
-  command: ln -s {{ atom_cli_apm }} /usr/local/bin/apm creates=/usr/local/bin/apm
+  file: src={{ atom_cli_apm }} dest=/usr/local/bin/apm state=link
 
 - name: install default atom packages
   command: apm install {{ item }}
