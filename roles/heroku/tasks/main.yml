@@ -1,0 +1,15 @@
+---
+
+- name: check if heroku toolbelt is installed
+  command: heroku version
+  ignore_errors: True
+  register: heroku_exists
+
+- name: download heroku toolbelt
+  when: heroku_exists|failed
+  get_url: url={{ heroku_install_url }} dest=/tmp/heroku.pkg mode=0440
+
+- name: install heroku toolbelt
+  when: heroku_exists|failed
+  command: installer -pkg /tmp/heroku.pkg -target /
+  sudo: yes
