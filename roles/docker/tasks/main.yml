@@ -37,16 +37,7 @@
   register: containers_installed
   ignore_errors: yes
 
-- name: create default containers (mean)
+- name: create default containers
   when: containers_installed | trim == ''
   command: docker-machine ssh default "docker run -d -P {{ item }}"
-  with_items: docker_default_containers_mean
-  tags:
-    - mean
-
-- name: create default containers (lamp)
-  when: containers_installed | trim == ''
-  command: docker-machine ssh default "docker run -d -P {{ item }}"
-  with_items: docker_default_containers_lamp
-  tags:
-    - lamp
+  with_items: docker_default_containers
