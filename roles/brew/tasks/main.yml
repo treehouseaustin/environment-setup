@@ -1,0 +1,7 @@
+---
+
+- name: install homebrew
+  homebrew: update_homebrew=yes
+
+- name: install bash completion
+  homebrew: name=bash-completion state=present

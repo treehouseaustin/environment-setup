@@ -17,6 +17,7 @@
 
   roles:
     - base
+    - brew
     - nodejs
     - dotfiles
     - docker

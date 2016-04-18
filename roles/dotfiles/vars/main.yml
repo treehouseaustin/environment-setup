@@ -1,4 +1,4 @@
 ---
 
-dotfiles_repo: "https://github.com/praxent/dotfiles"
+dotfiles_repo: "https://github.com/treehouseaustin/dotfiles"
 dotfiles_install_cmd: "./bootstrap.sh -f"
