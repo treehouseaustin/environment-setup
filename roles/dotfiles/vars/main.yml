@@ -1,4 +1,4 @@
 ---
 
-dotfiles_repo: "https://github.com/treehouseaustin/dotfiles"
-dotfiles_install_cmd: "./bootstrap.sh -f"
+dotfiles_repo: "https://github.com/treehouseaustin/team-guidelines"
+dotfiles_install_cmd: "./dotfiles/setup.sh -f"
