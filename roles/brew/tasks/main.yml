@@ -1,7 +1,21 @@
 ---
 
-- name: install homebrew
+- name: check for homebrew
   homebrew: update_homebrew=yes
+  register: homebrew_exists
+  ignore_errors: yes
+
+- name: download homebrew installer
+  when: homebrew_exists | failed
+  get_url: url=https://raw.githubusercontent.com/Homebrew/install/master/install dest=/tmp/install_homebrew.rb mode=0655
+
+- name: install homebrew
+  when: homebrew_exists | failed
+  command: /usr/bin/ruby /tmp/install_homebrew.rb
+
+- name: cleanup homebrew installer
+  when: homebrew_exists | failed
+  command: rm /tmp/install_homebrew.rb
 
 - name: install bash completion
   homebrew: name=bash-completion state=present
