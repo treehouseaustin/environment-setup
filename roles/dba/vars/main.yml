@@ -6,5 +6,5 @@ sequelpro_install_url: "{{ sequelpro_repo }}/releases/download/release-{{ sequel
 sequelpro_volume: "/Volumes/Sequel Pro {{ sequelpro_version }}"
 
 robomongo_version: 0.8.5
-robomongo_install_url: http://app.robomongo.org/files/mac/Robomongo-{{ robomongo_version }}-x86_64.dmg
+robomongo_install_url: https://download.robomongo.org/{{ robomongo_version }}/osx/Robomongo-{{ robomongo_version }}-x86_64.dmg
 robomongo_volume: /Volumes/Robomongo-{{ robomongo_version }}-x86_64

@@ -49,7 +49,7 @@
 
 - name: mount robomongo
   when: robomongo_exists | failed
-  raw: hdiutil convert /tmp/robomongo.dmg -format UDTO -o /tmp/robo.cdr && hdiutil attach /tmp/robo.cdr
+  command: hdiutil attach /tmp/robomongo.dmg
   tags:
     - mean
 
@@ -64,6 +64,6 @@
 
 - name: unmount robomongo
   when: robomongo_exists | failed
-  raw: hdiutil detach "{{ robomongo_volume }}" && rm /tmp/robo.cdr
+  raw: hdiutil detach "{{ robomongo_volume }}"
   tags:
     - mean
